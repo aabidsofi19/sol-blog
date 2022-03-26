@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig/vue.json",
+  "compilerOptions": {
+     "paths": {
+      "@/components/*": ["./src/components/*.vue"],
+      "@/src/*": ["./src/*"]
+    }
+    
+  },
+  "include": [
+    "src","tests"
+  ] 
+  
+
+}

@@ -1,0 +1,83 @@
+{
+  "name": "solana-blog",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "contracts"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev-clean": "turbo run dev-clean",
+    "deploy": "turbo run deploy",
+    "deployDev": "turbo run deployDev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test "
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.19.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "prettier": "^2.5.1",
+    "ts-mocha": "^9.0.2",
+    "turbo": "latest",
+    "typescript": "^4.3.5"
+  },
+  "turbo": {
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**",
+          ".vue/**"
+        ]
+      },
+      "test": {
+        "dependsOn": [
+          "build"
+        ],
+        "outputs": []
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      },
+      "deployDev": {
+        "dependsOn": [
+          "build",
+          "^build"
+        ],
+        "outputs": []
+      },
+      "smart-contracts#deployDev": {
+        "dependsOn": [
+          "build",
+          "dev"
+        ],
+        "outputs": []
+      },
+      "api#test": {
+        "dependsOn": [
+          "^test",
+          "smart-contracts#deployDev"
+        ],
+        "outputs": []
+      }
+    }
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,49 @@
+[32msol-blog:test: [0mcache hit, replaying output [2m3ea604c2ffe3ccf3[0m
+[32msol-blog:test: [0myarn run v1.22.17
+[32msol-blog:test: [0mwarning package.json: No license field
+[32msol-blog:test: [0m$ ts-mocha -p ./test.tsconfig.json -t 1000000 ./tests/*.ts
+[32msol-blog:test: [0m(node:87495) ExperimentalWarning: stream/web is an experimental feature. This feature could change at any time
+[32msol-blog:test: [0m(Use `node --trace-warnings ...` to show where the warning was created)
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m  ipfs add
+[32msol-blog:test: [0m    ✔ should create a client
+[32msol-blog:test: [0m    1) should add a file
+[32msol-blog:test: [0m(node:87495) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 3)
+[32msol-blog:test: [0m    2) should get a file
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m  1 passing (187ms)
+[32msol-blog:test: [0m  2 failing
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m  1) ipfs add
+[32msol-blog:test: [0m       should add a file:
+[32msol-blog:test: [0m     ReferenceError: File is not defined
+[32msol-blog:test: [0m      at /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:7:17
+[32msol-blog:test: [0m      at step (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:33:23)
+[32msol-blog:test: [0m      at Object.next (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:14:53)
+[32msol-blog:test: [0m      at /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:8:71
+[32msol-blog:test: [0m      at new Promise (<anonymous>)
+[32msol-blog:test: [0m      at __awaiter (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:4:12)
+[32msol-blog:test: [0m      at createFile (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/helpers/index.ts:46:12)
+[32msol-blog:test: [0m      at Suite.<anonymous> (tests/ipfs.test.ts:7:34)
+[32msol-blog:test: [0m      at Object.<anonymous> (tests/ipfs.test.ts:5:1)
+[32msol-blog:test: [0m      at Module._compile (node:internal/modules/cjs/loader:1095:14)
+[32msol-blog:test: [0m      at Module.m._compile (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/ts-node/src/index.ts:439:23)
+[32msol-blog:test: [0m      at Module._extensions..js (node:internal/modules/cjs/loader:1124:10)
+[32msol-blog:test: [0m      at Object.require.extensions.<computed> [as .ts] (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/ts-node/src/index.ts:442:12)
+[32msol-blog:test: [0m      at Module.load (node:internal/modules/cjs/loader:975:32)
+[32msol-blog:test: [0m      at Function.Module._load (node:internal/modules/cjs/loader:816:12)
+[32msol-blog:test: [0m      at Module.require (node:internal/modules/cjs/loader:999:19)
+[32msol-blog:test: [0m      at require (node:internal/modules/cjs/helpers:93:18)
+[32msol-blog:test: [0m
+[32msol-blog:test: [0m  2) ipfs add
+[32msol-blog:test: [0m       should get a file:
+[32msol-blog:test: [0m     TypeError: f.stream is not a function
+[32msol-blog:test: [0m      at /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/web3.storage/src/lib.js:108:22
+[32msol-blog:test: [0m      at Array.map (<anonymous>)
+[32msol-blog:test: [0m      at Function.put (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/web3.storage/src/lib.js:106:34)
+[32msol-blog:test: [0m      at Web3Storage.put (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/web3.storage/src/lib.js:316:24)
+[32msol-blog:test: [0m      at /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/api/ipfs.ts:36:31
+[32msol-blog:test: [0m      at step (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/packages/api/ipfs.ts:33:23)
+[32msol-blog:test: [0m      at Object.next (/mnt/1EE85398E8536CD1/Users/hp/W

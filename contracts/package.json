@@ -1,0 +1,19 @@
+{
+  "name": "smart-contracts",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "anchor test",
+    "dev": " solana-test-validator",
+    "dev-clean": "cd .anchor &&  rm test-ledger && solana-test-validator",
+    "build": "anchor build  ",
+    "deploy": "anchor migrate",
+    "deployDev": "anchor deploy ",
+    "deploy-prod": "anchor deploy --prod"
+  },
+  "devDependencies": {
+    "tsconfig": "*",
+    "config": "*",
+    "typescript": "^4.5.3",
+    "types": "*"
+  }
+}

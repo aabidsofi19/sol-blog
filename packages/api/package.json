@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "scripts": {
+    "test": "ts-mocha -p ./test.tsconfig.json -t 1000000 ./tests/*.ts"
+  },
+  "devDependencies": {
+    "tsconfig": "*",
+    "config": "*",
+    "typescript": "^4.5.3",
+    "types": "*",
+    "helpers": "*"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "vue.json",
+    "testing.json",
+    "react-library.json"
+  ],
+  "dependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.0.0"
+  }
+}
