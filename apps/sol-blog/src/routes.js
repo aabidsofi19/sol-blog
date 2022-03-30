@@ -1,26 +1,29 @@
-import home from "./pages/homePage.vue";
-import blogPost from "./pages/blogPostPage.vue";
-import editor from "./pages/editor.vue";
-import myPosts from "./pages/MyPosts.vue";
+import CreatePost from "@/pages/CreatePost.vue";
+
 export default [
   {
     path: "/",
     name: "home",
-    component: home,
+    component: () => import("./pages/homePage.vue"),
   },
   {
     path: "/posts/:address",
     name: "post",
-    component: blogPost,
+    component: () => import("./pages/blogPostPage.vue"),
   },
   {
-    path: "/editor",
-    name: "editor",
-    component: editor,
+    path: "/create-post",
+    name: "create-post",
+    component: CreatePost,
   },
   {
-    path: "/myposts",
-    name: "myposts",
-    component: myPosts,
+    path: "/posts/user/:id",
+    name: "user-posts",
+    component: () => import("./pages/UserPosts.vue"),
+  },
+  {
+    path: "/posts/:postPubKey/update",
+    name: "update-post",
+    component: () => import("./pages/UpdatePost.vue"),
   },
 ];

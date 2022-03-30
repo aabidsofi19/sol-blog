@@ -7,16 +7,15 @@ import navBar from "../components/ui/navBar.vue";
 import { ProgramAccount } from "@project-serum/anchor";
 import { BlogPostAccount } from "types";
 import postsList from "../components/postsList.vue";
+import { useRoute } from "vue-router";
 
 const workspace = useWorkspace();
-const wallet = useWallet();
 
-const authorBase58 = computed(async () => {
-  return wallet.publicKey.value?.toBase58();
-});
+const route = useRoute();
+const authorBase58 = route.params.id as string;
 
 const getPosts = async () => {
-  const author = await authorBase58.value;
+  const author = authorBase58;
   if (!workspace) return [];
   if (!author) return [];
   const filter = authorFilter(author);
@@ -32,8 +31,11 @@ watchEffect(async () => {
 
 <template>
   <nav-bar />
-  <div v-if="wallet.connected">
+
+  <div>
+    <div class="font-lg my-3 text-gray-500">
+      POSTS BY : <span class="font-bold font-mono">{{ authorBase58 }}</span>
+    </div>
     <posts-list :posts="posts" />
   </div>
-  <div v-else>connect to wallet first</div>
 </template>

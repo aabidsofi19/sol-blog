@@ -5,7 +5,7 @@ type BlogProgram = Program<Blog>;
 type BlogProgramAccounts = IdlAccounts<Blog>;
 type BlogPostAccount = BlogProgramAccounts["blogPost"];
 
-interface BlogPostInputInterface {
+export interface BlogPostInputInterface {
   title: string;
   content: string;
   banner: File;
@@ -23,5 +23,4 @@ export {
   type BlogProgram,
   type BlogProgramAccounts,
   type BlogPostAccount,
-  type BlogPostInputInterface,
 };

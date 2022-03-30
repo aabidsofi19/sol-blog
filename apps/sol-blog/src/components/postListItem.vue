@@ -6,6 +6,18 @@ import { addImageFileToImageElem, getFileFromWeb3Result } from "helpers";
 import { getFile } from "api/ipfs";
 import dayjs from "dayjs";
 import { useWallet } from "@solana/wallet-adapter-vue";
+import BaseButton from "ui/BaseButton.vue";
+import DropDownMenu from "ui/DropdownMenu.vue";
+import DropDownOption from "ui/BaseDropdownOption.vue";
+import { DotsVerticalIcon, BeakerIcon } from "@heroicons/vue/solid";
+
+import { useRouter } from "vue-router";
+import BasePill from "ui/BasePill.vue";
+import { deletePost } from "api";
+import { useWorkspace } from "../composables";
+
+const router = useRouter();
+const workspace = useWorkspace();
 
 interface props {
   post: ProgramAccount<BlogPostAccount>;
@@ -29,15 +41,41 @@ const addBannerImage = async (hash: string) => {
   }
 };
 
+const authorityConcated = computed(() => {
+  const authority = post.account.authority.toString();
+  return authority.slice(0, 5) + ".." + authority.slice(-5);
+});
+
 const isAuthor = computed(() => {
   return (
     post.account.authority.toString() === wallet.publicKey.value?.toBase58()
   );
 });
 
-const updatePost = (e: Event) => {
-  e.stopPropagation();
-  e.preventDefault();
+const updatePost = () => {
+  router.push({
+    name: "update-post",
+    params: { postPubKey: post.publicKey.toString() },
+  });
+};
+
+const deletePost_ = async () => {
+  console.log("delete post");
+
+  console.log(workspace);
+  if (workspace) {
+    console.log("deleting post");
+    const { program, provider, wallet } = workspace;
+
+    const tx = await deletePost(
+      program.value,
+      provider.value,
+      post.publicKey.toString()
+    );
+
+    router.go(0);
+    console.log("deleted :", tx);
+  }
 };
 
 watchEffect(async () => {
@@ -48,32 +86,49 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <router-link
-    :to="{ name: 'post', params: { address: post.publicKey.toString() } }"
-    class="flex flex-row justify-end items-start my-10 h-60"
+  <div
+    class="flex flex-row justify-end items-center my-10 h-min-60 h-auto border border-gray-300 rounded-md shadow-sm"
   >
-    <div class="text-left pr-3 w-2/3">
-      <p class="open-sans font-semibold mb-2 text-black">
-        {{ post.account.authority }}
-      </p>
-      <p
-        class="montserrat text-black font-extrabold md:text-xl text-left title"
+    <div class="text-left pr-3 w-2/3 p-8">
+      <router-link
+        :to="{ name: 'post', params: { address: post.publicKey.toString() } }"
+        class="montserrat capitalize text-slate-800 font-bold md:text-2xl text-left"
       >
         {{ post.account.title }}
-      </p>
-      <div class="flex justify-between">
-        <p class="open-sans font-semibold my-3 text-black">
-          posted on: {{ createdAt }}
-        </p>
-        <button v-if="isAuthor" @click="updatePost($event)">Update</button>
+      </router-link>
+
+      <div class="flex justify-between flex-wrap gap-3 py-3">
+        <base-pill class="bg-gray-300">{{ authorityConcated }}</base-pill>
+        <base-pill disabled>
+          {{ createdAt }}
+        </base-pill>
+
+        <drop-down-menu v-if="isAuthor">
+          <template v-slot:label>
+            <DotsVerticalIcon class="h-5 w-5 text-gray-600" />
+          </template>
+
+          <drop-down-option @click="updatePost"> Update </drop-down-option>
+          <drop-down-option @click="deletePost_"> Delete </drop-down-option>
+        </drop-down-menu>
+      </div>
+      <div class="text-xs font-mono">
+        <div class="py-2 px-3 break-words border border-gray-600 rounded my-2">
+          Ac : {{ post.publicKey.toString() }}
+        </div>
+        <div class="py-2 px-3 break-words border border-gray-600 rounded my-2">
+          IPFS: {{ post.account.contentIpfsHash.toString() }}
+        </div>
       </div>
     </div>
 
-    <img
-      ref="imgElem"
-      class="h-full w-1/3 object-cover"
-      src="https://blog.logrocket.com/wp-content/uploads/2020/01/vue-typescript-tutorial-examples.png"
-    />
-  </router-link>
+    <div class="bg-red-300 w-1/3 flex">
+      <img
+        ref="imgElem"
+        class="object-cover flex h-80"
+        src="https://blog.logrocket.com/wp-content/uploads/2020/01/vue-typescript-tutorial-examples.png"
+      />
+    </div>
+  </div>
   <!--post -->
 </template>

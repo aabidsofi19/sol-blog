@@ -1,62 +1,112 @@
 import * as anchor from "@project-serum/anchor";
 import { Program, web3 } from "@project-serum/anchor";
-import { Blog } from "../target/types/blog";
 import assert from "assert";
-import idl from "../target/idl/blog.json";
-
-describe("blog", () => {
+import {
+  createPost,
+  postData,
+  fetchPost,
+  fetchPosts,
+  updatePost,
+  deletePost,
+} from "api";
+import { BlogProgram } from "types";
+import { expect } from "chai";
+describe("blog", async () => {
   // Configure the client to use the local cluster.
   const provider = anchor.Provider.env();
   anchor.setProvider(provider);
 
-  const program = anchor.workspace.Blog as Program<Blog>;
+  const program = anchor.workspace.Blog as BlogProgram;
+  // generate a new pubkey
 
-  const blogPostAccount = anchor.web3.Keypair.generate();
-
-  const title = "dummy blog";
-  const ipfs_content_hash = "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u";
-  const banner_hash = "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u";
   it("create post !", async () => {
-    let tx_id = await program.rpc.createPost(
-      title,
-      Buffer.from(banner_hash),
-      Buffer.from(ipfs_content_hash),
-      {
-        accounts: {
-          blogPost: blogPostAccount.publicKey,
-          authority: provider.wallet.publicKey,
-          systemProgram: web3.SystemProgram.programId,
-        },
-        signers: [blogPostAccount],
-      }
-    );
-
+    const postInput: postData = {
+      title: "dummy post",
+      content_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+      banner_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+    };
+    await createPost(program, provider, postInput);
     let posts = await program.account.blogPost.all();
-    assert.equal(posts.length, 1);
+    const { account: post } = posts[0];
+    expect(post.title).eq(postInput.title);
+
+    // expect(post.contentIpfsHash).eq(postInput.content_ipfs_hash);
+    // expect(post.bannerIpfsHash).eq(postInput.banner_ipfs_hash);
+    expect(posts.length).eq(1);
   });
 
-  it("get post !", async () => {
-    let posts = await program.account.blogPost.all();
-    let post = await program.account.blogPost.fetch(posts[0].publicKey);
-    assert.equal(post.title, title);
+  it("fetch post", async () => {
+    const postInput: postData = {
+      title: "new post",
+      content_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+      banner_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+    };
+
+    const postPubKey = await createPost(program, provider, postInput);
+    const post = await fetchPost(program, postPubKey.toString());
+    expect(post.title).eq(postInput.title);
+
+    console.log("post ipgs", post.contentIpfsHash as string);
+
+    expect(post.contentIpfsHash.toString()).eq(
+      postInput.content_ipfs_hash.toString()
+    );
+    expect(post.bannerIpfsHash.toString()).eq(
+      postInput.banner_ipfs_hash.toString()
+    );
   });
 
-  it("update post !", async () => {
-    let tx_id = await program.rpc.updatePost(
-      "updated title",
-      Buffer.from("QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"),
-      Buffer.from("QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"),
-      {
-        accounts: {
-          blogPost: blogPostAccount.publicKey,
-          authority: provider.wallet.publicKey,
-        },
-        signers: [],
-      }
-    );
+  it("fetch posts", async () => {
+    const posts = await fetchPosts(program);
+    expect(posts.length).eq(2);
+  });
 
-    let post = await program.account.blogPost.fetch(blogPostAccount.publicKey);
+  it("update post", async () => {
+    const postInput: postData = {
+      title: "new post",
+      content_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+      banner_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+    };
 
-    assert.equal(post.title, "updated title");
+    const postId = await createPost(program, provider, postInput);
+    postInput.title = "updated post";
+
+    await updatePost(program, provider, postInput, postId.toString());
+
+    const updatedPost = await fetchPost(program, postId.toString());
+
+    expect(updatedPost.title).eq("updated post");
+  });
+
+  it("delete post", async () => {
+    const len = (await program.account.blogPost.all()).length;
+    const postInput: postData = {
+      title: "new post",
+      content_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+      banner_ipfs_hash: Buffer.from(
+        "QmWATWQ7fVPP2EFGu71UkfnqhYXDYH566qy47CnJDgvs8u"
+      ),
+    };
+
+    const postId = await createPost(program, provider, postInput);
+
+    await deletePost(program, provider, postId.toString());
+    const posts = await program.account.blogPost.all();
+
+    expect(posts.length).eq(len);
   });
 });

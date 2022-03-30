@@ -1,0 +1,62 @@
+[0m[38;5;8m[[0m2022-03-28T12:07:58.005798513Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m solana-validator 1.8.5 (src:devbuild; feat:52865992)
+[0m[38;5;8m[[0m2022-03-28T12:07:58.005959115Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m Starting validator with: ArgsOs {
+        inner: [
+            "solana-validator",
+            "--identity",
+            "validator-keypair.json",
+            "--vote-account",
+            "vote-account-keypair.json",
+            "--known-validator",
+            "dv1ZAGvdsz5hHLwWXsVnM94hWf1pjbKVau1QVkaMJ92",
+            "--known-validator",
+            "dv2eQHeP4RFrJZ6UeiZWoc3XTtmtZCUKxxCApCDcRNV",
+            "--known-validator",
+            "dv4ACNkpYPcE3aKmYDqZm9G5EB3J4MRoeE7WNDRBVJB",
+            "--known-validator",
+            "dv3qDFk1DTF36Z62bNvrCXe9sKATA6xvVy6A798xxAS",
+            "--only-known-rpc",
+            "--ledger",
+            "ledger",
+            "--rpc-port",
+            "8899",
+            "--dynamic-port-range",
+            "8000-8020",
+            "--entrypoint",
+            "entrypoint.devnet.solana.com:8001",
+            "--entrypoint",
+            "entrypoint2.devnet.solana.com:8001",
+            "--entrypoint",
+            "entrypoint3.devnet.solana.com:8001",
+            "--entrypoint",
+            "entrypoint4.devnet.solana.com:8001",
+            "--entrypoint",
+            "entrypoint5.devnet.solana.com:8001",
+            "--expected-genesis-hash",
+            "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+            "--wal-recovery-mode",
+            "skip_any_corrupted_record",
+            "--limit-ledger-size",
+        ],
+    }
+[0m[38;5;8m[[0m2022-03-28T12:07:58.006459149Z [0m[33mWARN [0m solana_perf[0m[38;5;8m][0m CUDA is disabled
+[0m[38;5;8m[[0m2022-03-28T12:07:58.006584154Z [0m[32mINFO [0m solana_perf[0m[38;5;8m][0m AVX detected
+[0m[38;5;8m[[0m2022-03-28T12:07:59.651691925Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m obtained shred-version 23305 from 147.75.55.147:8001
+[0m[38;5;8m[[0m2022-03-28T12:07:59.655159447Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m Contacting 145.40.71.85:8001 to determine the validator's public IP address
+[0m[38;5;8m[[0m2022-03-28T12:07:59.929216732Z [0m[32mINFO [0m solana_metrics::metrics[0m[38;5;8m][0m host id: Ej46F1TyZdavPFYFeLsJR2TFEDJSztCsDX3RMBBxSgT7
+[0m[38;5;8m[[0m2022-03-28T12:07:59.929739499Z [0m[32mINFO [0m solana_ledger::entry[0m[38;5;8m][0m Loading "libpoh-simd.so"
+[0m[38;5;8m[[0m2022-03-28T12:07:59.930148612Z [0m[32mINFO [0m solana_perf::perf_libs[0m[38;5;8m][0m perf-libs found at "/home/aabid/solana-1.8.5/bin/perf-libs"
+[0m[38;5;8m[[0m2022-03-28T12:07:59.930283106Z [0m[32mINFO [0m solana_perf::perf_libs[0m[38;5;8m][0m setting ld_library_path to: "/home/aabid/solana-1.8.5/bin/perf-libs:"
+[0m[38;5;8m[[0m2022-03-28T12:07:59.931165875Z [0m[32mINFO [0m solana_net_utils[0m[38;5;8m][0m Checking that tcp ports [(8899, TcpListener { addr: 0.0.0.0:8899, fd: 109 }), (8900, TcpListener { addr: 0.0.0.0:8900, fd: 110 }), (8000, TcpListener { addr: 0.0.0.0:8000, fd: 111 })] are reachable from 136.144.49.15:8001
+[0m[38;5;8m[[0m2022-03-28T12:08:10.992018166Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8899, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:15.993077343Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8900, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:20.994202657Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8000, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:20.995040675Z [0m[32mINFO [0m solana_net_utils[0m[38;5;8m][0m Checking that tcp ports [(8899, TcpListener { addr: 0.0.0.0:8899, fd: 109 }), (8900, TcpListener { addr: 0.0.0.0:8900, fd: 110 }), (8000, TcpListener { addr: 0.0.0.0:8000, fd: 111 })] are reachable from 35.197.53.105:8001
+[0m[38;5;8m[[0m2022-03-28T12:08:31.879880383Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8899, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:36.881558587Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8900, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:41.883203780Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8000, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:41.884412683Z [0m[32mINFO [0m solana_net_utils[0m[38;5;8m][0m Checking that tcp ports [(8899, TcpListener { addr: 0.0.0.0:8899, fd: 109 }), (8900, TcpListener { addr: 0.0.0.0:8900, fd: 110 }), (8000, TcpListener { addr: 0.0.0.0:8000, fd: 111 })] are reachable from 147.75.105.51:8001
+[0m[38;5;8m[[0m2022-03-28T12:08:52.610830606Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8899, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:08:57.612598113Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8900, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:09:02.614135914Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8000, check your port configuration: timed out waiting on channel
+[0m[38;5;8m[[0m2022-03-28T12:09:02.615291462Z [0m[32mINFO [0m solana_net_utils[0m[38;5;8m][0m Checking that tcp ports [(8899, TcpListener { addr: 0.0.0.0:8899, fd: 109 }), (8900, TcpListener { addr: 0.0.0.0:8900, fd: 110 }), (8000, TcpListener { addr: 0.0.0.0:8000, fd: 111 })] are reachable from 145.40.71.85:8001
+[0m[38;5;8m[[0m2022-03-28T12:09:13.041200622Z [0m[1m[31mERROR[0m solana_net_utils[0m[38;5;8m][0m Received no response at tcp/8899, check your port configuration: timed out waiting on channel

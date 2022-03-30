@@ -26,6 +26,7 @@ export const initWorkspace = () => {
   const opts = {
     preflightCommitment: "processed",
   };
+  // const connection = new Connection("https://api.devnet.solana.com:443");
   const connection = new Connection("http://127.0.0.1:8899");
   const provider = computed(() => new Provider(connection, wallet.value, opts));
   const program: ComputedRef<BlogProgram> = computed(

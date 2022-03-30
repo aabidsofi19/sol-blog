@@ -7,6 +7,10 @@
     "packages/*",
     "contracts"
   ],
+  "nohoist": [
+    "**/ui",
+    "**/ui/**"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",

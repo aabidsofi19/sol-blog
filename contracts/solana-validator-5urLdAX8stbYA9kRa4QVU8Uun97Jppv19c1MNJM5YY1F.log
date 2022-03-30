@@ -1,0 +1,25 @@
+[0m[38;5;8m[[0m2022-03-28T12:07:06.567478536Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m solana-validator 1.8.5 (src:devbuild; feat:52865992)
+[0m[38;5;8m[[0m2022-03-28T12:07:06.567728701Z [0m[32mINFO [0m solana_validator[0m[38;5;8m][0m Starting validator with: ArgsOs {
+        inner: [
+            "solana-validator",
+            "--identity",
+            "validator.json",
+        ],
+    }
+[0m[38;5;8m[[0m2022-03-28T12:07:06.568635271Z [0m[33mWARN [0m solana_perf[0m[38;5;8m][0m CUDA is disabled
+[0m[38;5;8m[[0m2022-03-28T12:07:06.568784800Z [0m[32mINFO [0m solana_perf[0m[38;5;8m][0m AVX detected
+[0m[38;5;8m[[0m2022-03-28T12:07:06.571726752Z [0m[33mWARN [0m solana_validator[0m[38;5;8m][0m --vote-account not specified, validator will not vote
+[0m[38;5;8m[[0m2022-03-28T12:07:06.578985238Z [0m[32mINFO [0m solana_metrics::metrics[0m[38;5;8m][0m host id: 5urLdAX8stbYA9kRa4QVU8Uun97Jppv19c1MNJM5YY1F
+[0m[38;5;8m[[0m2022-03-28T12:07:06.581038880Z [0m[32mINFO [0m solana_ledger::entry[0m[38;5;8m][0m Loading "libpoh-simd.so"
+[0m[38;5;8m[[0m2022-03-28T12:07:06.582492470Z [0m[32mINFO [0m solana_perf::perf_libs[0m[38;5;8m][0m perf-libs found at "/home/aabid/solana-1.8.5/bin/perf-libs"
+[0m[38;5;8m[[0m2022-03-28T12:07:06.582712051Z [0m[32mINFO [0m solana_perf::perf_libs[0m[38;5;8m][0m setting ld_library_path to: "/home/aabid/solana-1.8.5/bin/perf-libs:"
+[0m[38;5;8m[[0m2022-03-28T12:07:06.586248677Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m identity: 5urLdAX8stbYA9kRa4QVU8Uun97Jppv19c1MNJM5YY1F
+[0m[38;5;8m[[0m2022-03-28T12:07:06.586384084Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m vote account: 8vusdikZV87b8d64Ryt6TLWhYyhUeFkiCRJph1qPMdGL
+[0m[38;5;8m[[0m2022-03-28T12:07:06.587228692Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m voting disabled
+[0m[38;5;8m[[0m2022-03-28T12:07:06.587335187Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Initializing sigverify...
+[0m[38;5;8m[[0m2022-03-28T12:07:06.587451125Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Done.
+[0m[38;5;8m[[0m2022-03-28T12:07:06.587609755Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Cleaning accounts paths..
+[0m[38;5;8m[[0m2022-03-28T12:07:06.588815036Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m done. clean_accounts_paths took 445us
+[0m[38;5;8m[[0m2022-03-28T12:07:06.588971569Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m loading ledger from "/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/ledger"...
+[0m[38;5;8m[[0m2022-03-28T12:07:06.591271097Z [0m[32mINFO [0m solana_runtime::hardened_unpack[0m[38;5;8m][0m Extracting "/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/ledger/genesis.tar.bz2"...
+[0m[38;5;8m[[0m2022-03-28T12:07:06.592194668Z [0m[33mWARN [0m solana_runtime::hardened_unpack[0m[38;5;8m][0m Failed to open ledger genesis_config at "/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/ledger": Unable to open "/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/ledger/genesis.bin": Os { code: 2, kind: NotFound, message: "No such file or directory" }, IO error: No such file or directory (os error 2)

@@ -3,13 +3,13 @@ use anchor_lang::solana_program::system_program;
 
 declare_id!("Ab5jcLYJ5dQUarijL1JuRJMMo321PzF9HEpf5Br1v95K");
 
-#[error]
-pub enum ErrorCode {
-    #[msg("The provided topic should be 100 characters long maximum.")]
-    TitleTooLong,
-    #[msg("The provided content should be 2800 characters long maximum.")]
-    ContentTooLong,
-}
+// #[error]
+// pub enum ErrorCode {
+//     #[msg("The provided topic should be 100 characters long maximum.")]
+//     TitleTooLong,
+//     #[msg("The provided content should be 2800 characters long maximum.")]
+//     ContentTooLong,
+// }
 
 #[program]
 pub mod blog {
@@ -17,14 +17,17 @@ pub mod blog {
 
     pub fn create_post(
         ctx: Context<CreatePost>,
+        id : Pubkey ,
         title: String,
         banner_ipfs_hash: Vec<u8>,
         content_ipfs_hash: Vec<u8>,
-    ) -> ProgramResult {
-        if title.chars().count() > 100 {
-            // Return a error...
-            return Err(ErrorCode::TitleTooLong.into());
-        }
+    ) -> Result<()> {
+        // if title.chars().count() > 100 {
+        //     // Return a error...
+        //     return Err(ErrorCode::TitleTooLong.into());
+        // }
+
+        
 
         let blog_post = &mut ctx.accounts.blog_post;
         let authority = ctx.accounts.authority.key;
@@ -34,7 +37,8 @@ pub mod blog {
         blog_post.timestamp = clock.unix_timestamp;
         blog_post.banner_ipfs_hash = banner_ipfs_hash;
         blog_post.content_ipfs_hash = content_ipfs_hash;
-
+        blog_post.bump = *ctx.bumps.get("blog_post").unwrap();
+        blog_post.id = id;
         Ok(())
     }
 
@@ -43,12 +47,16 @@ pub mod blog {
         title: String,
         banner_ipfs_hash: Vec<u8>,
         content_ipfs_hash: Vec<u8>,
-    ) -> ProgramResult {
+    ) -> Result<()> {
         let blog_post = &mut ctx.accounts.blog_post;
         blog_post.title = title;
         blog_post.banner_ipfs_hash = banner_ipfs_hash;
         blog_post.content_ipfs_hash = content_ipfs_hash;
 
+        Ok(())
+    }
+
+    pub fn delete_post(ctx:Context<DeletePost>) -> Result<()> {
         Ok(())
     }
 }
@@ -63,30 +71,56 @@ const MAX_URL_LENGTH: usize = 200 * 4;
 const IPFS_HASH_LENGTH: usize = 32;
 
 #[derive(Accounts)]
+#[instruction(id:Pubkey)]
 pub struct CreatePost<'info> {
-    #[account(init,payer=authority,space=BlogPost::LEN)]
+
+    #[account(init,payer=authority,space=BlogPost::LEN,
+     seeds=[b"blog-post" , authority.key.as_ref(),id.key().as_ref()] ,
+     bump
+    )]
     pub blog_post: Account<'info, BlogPost>,
+    
     #[account(mut)]
     pub authority: Signer<'info>,
-    #[account(address = system_program::ID)]
-    pub system_program: AccountInfo<'info>,
+    
+    pub system_program: Program<'info, System>
 }
 
 #[derive(Accounts)]
 pub struct UpdatePost<'info> {
-    #[account(mut,has_one=authority)]
+
+   #[account(mut ,has_one = authority ,
+     seeds=[b"blog-post" , authority.key.as_ref(),blog_post.id.key().as_ref()] ,
+     bump=blog_post.bump 
+    )]
     pub blog_post: Account<'info, BlogPost>,
     #[account(mut)]
     pub authority: Signer<'info>,
 }
 
+
+#[derive(Accounts) ]
+pub struct DeletePost<'info> {
+
+    #[account(mut ,has_one = authority ,
+     seeds=[b"blog-post" , authority.key.as_ref(),blog_post.id.key().as_ref()] ,
+     bump=blog_post.bump , close = authority 
+    )]
+    pub blog_post: Account<'info, BlogPost>,
+    #[account(mut)]
+    pub authority: Signer<'info>,
+}
+
+
 #[account]
 pub struct BlogPost {
     pub authority: Pubkey,
+    pub id : Pubkey,
     pub timestamp: i64,
     pub title: String,
     pub banner_ipfs_hash: Vec<u8>,
     pub content_ipfs_hash: Vec<u8>,
+    bump : u8 ,
 }
 
 impl BlogPost {
@@ -94,6 +128,7 @@ impl BlogPost {
         + PUBLIC_KEY_LENGTH // Author.
         + TIMESTAMP_LENGTH // Timestamp.
         + STRING_LENGTH_PREFIX + MAX_TITLE_LENGTH // Titile
-        + IPFS_HASH_LENGTH // Banner
-        + IPFS_HASH_LENGTH; // Content.
+        + 4 + IPFS_HASH_LENGTH // Banner
+        + 4 + IPFS_HASH_LENGTH // Content.
+        + 1; // Bump.
 }

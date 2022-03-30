@@ -1,6 +1,12 @@
 import { SystemProgram } from "@solana/web3.js";
 import { PublicKey } from "@solana/web3.js";
-import { web3, Program, Provider, Accounts } from "@project-serum/anchor";
+import {
+  web3,
+  Program,
+  Provider,
+  Accounts,
+  utils,
+} from "@project-serum/anchor";
 
 import { addFile } from "./ipfs";
 import { createFile } from "helpers";
@@ -11,6 +17,7 @@ import {
   BlogPostInputInterface,
   AnchorFilter,
 } from "types";
+import { publicKey } from "@project-serum/anchor/dist/cjs/utils";
 
 export const authorFilter = (authorBase58PublicKey: string): AnchorFilter => ({
   memcmp: {
@@ -19,36 +26,84 @@ export const authorFilter = (authorBase58PublicKey: string): AnchorFilter => ({
   },
 });
 
-async function createPost(
-  program: BlogProgram,
-  provider: Provider,
+export async function generateCreatePostInput(
   postData: BlogPostInputInterface
 ) {
   let file = await createFile(postData.content, postData.title);
   let content_ipfs_hash = Buffer.from(await addFile(file));
   let banner_ipfs_hash = Buffer.from(await addFile(postData.banner));
-  let blogPostAccount = web3.Keypair.generate();
-  console.log("banner hash", banner_ipfs_hash);
+
+  return {
+    title: postData.title,
+    content_ipfs_hash,
+    banner_ipfs_hash,
+  };
+}
+
+export interface postData {
+  title: string;
+  content_ipfs_hash: Buffer;
+  banner_ipfs_hash: Buffer;
+}
+
+async function createPost(
+  program: BlogProgram,
+  provider: Provider,
+  postData: postData
+) {
+  const { title, content_ipfs_hash, banner_ipfs_hash } = postData;
+  const seedPubkey = web3.Keypair.generate().publicKey;
+  let [blogPostAccountPDA, _] = await PublicKey.findProgramAddress(
+    [
+      utils.bytes.utf8.encode("blog-post"),
+      provider.wallet.publicKey.toBuffer(),
+
+      seedPubkey.toBuffer(),
+    ],
+    program.programId
+  );
   let tx = await program.rpc.createPost(
-    postData.title,
+    seedPubkey,
+    title,
     banner_ipfs_hash,
     content_ipfs_hash,
     {
       accounts: {
-        blogPost: blogPostAccount.publicKey,
+        blogPost: blogPostAccountPDA,
         authority: provider.wallet.publicKey,
         systemProgram: SystemProgram.programId,
       },
-      signers: [blogPostAccount],
+      signers: [],
     }
   );
-  console.log("Your transaction signature for createpost ", tx);
-  return blogPostAccount;
+  return blogPostAccountPDA;
 }
+
+const updatePost = async (
+  program: BlogProgram,
+  provider: Provider,
+  postData: postData,
+  address: String
+) => {
+  const { title, content_ipfs_hash, banner_ipfs_hash } = postData;
+
+  let tx = await program.rpc.updatePost(
+    title,
+    banner_ipfs_hash,
+    content_ipfs_hash,
+    {
+      accounts: {
+        blogPost: new PublicKey(address),
+        authority: provider.wallet.publicKey,
+      },
+      signers: [],
+    }
+  );
+  return tx;
+};
 
 async function fetchPosts(program: BlogProgram, filters: AnchorFilter[] = []) {
   let posts = await program.account.blogPost.all(filters);
-  console.log("posts", posts);
   return posts;
 }
 
@@ -59,4 +114,21 @@ async function fetchPost(program: BlogProgram, address: String) {
   return post;
 }
 
-export { createPost, fetchPosts, fetchPost };
+async function deletePost(
+  program: BlogProgram,
+  provider: Provider,
+  address: String
+) {
+  let blogPost = new PublicKey(address);
+  const tx = await program.rpc.deletePost({
+    accounts: {
+      blogPost: blogPost,
+      authority: provider.wallet.publicKey,
+    },
+    signers: [],
+  });
+
+  return tx;
+}
+
+export { createPost, updatePost, fetchPosts, fetchPost, deletePost };

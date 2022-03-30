@@ -1,7 +1,11 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="fixed inset-0 overflow-hidden" @close="open = false">
+    <Dialog
+      as="div"
+      class="fixed inset-0 overflow-hidden"
+      @close="open = false"
+    >
       <div class="absolute inset-0 overflow-hidden">
         <TransitionChild
           as="template"
@@ -12,7 +16,9 @@
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <DialogOverlay class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <DialogOverlay
+            class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          />
         </TransitionChild>
         <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
           <TransitionChild
@@ -34,7 +40,9 @@
                 leave-from="opacity-100"
                 leave-to="opacity-0"
               >
-                <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                <div
+                  class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4"
+                >
                   <button
                     type="button"
                     class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -45,9 +53,13 @@
                   </button>
                 </div>
               </TransitionChild>
-              <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+              <div
+                class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll"
+              >
                 <div class="px-4 sm:px-6">
-                  <DialogTitle class="text-lg font-medium text-gray-900"> Panel title </DialogTitle>
+                  <DialogTitle class="text-lg font-medium text-gray-900">
+                    <slot name="title"> Menu </slot>
+                  </DialogTitle>
                 </div>
                 <div class="mt-6 relative flex-1 px-4 sm:px-6">
                   <!-- Replace with your content -->
@@ -66,41 +78,37 @@
     </Dialog>
   </TransitionRoot>
 </template>
-<script>
-import { ref } from 'vue'
-import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 
-export default {
-  components: {
-    Dialog,
-    DialogOverlay,
-    DialogTitle,
-    TransitionChild,
-    TransitionRoot,
-  },
-  props: {
-    isOpen: {
-      type: Boolean,
-      default: true,
-    },
-    toggle: {
-      type: Function,
-    },
-    title: {
-      type: String,
-      default: '',
-    },
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import {
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    default: true,
   },
 
-  computed: {
-    open: {
-      get() {
-        return this.isOpen
-      },
-      set() {
-        this.toggle()
-      },
-    },
+  title: {
+    type: String,
+    default: "",
   },
-}
+});
+
+const emit = defineEmits(["close"]);
+
+const open = computed({
+  get: () => {
+    return props.isOpen;
+  },
+  set: (value) => {
+    emit("close");
+  },
+});
 </script>

@@ -4,12 +4,23 @@
       <ListboxLabel>{{ label }} :</ListboxLabel>
       <ListboxButton
         class="relative border border-gray-400 focus-visible:border-blue-400 focus:ring-1 focus:ring-blue-600 w-full py-2 pl-3 pr-10 text-left bg-white rounded-md"
-        :class="[$props.errors.length > 0 ? 'border-red-500' : 'border-gray-400']"
+        :class="[
+          $props.errors.length > 0 ? 'border-red-500' : 'border-gray-400',
+        ]"
       >
-        <span v-if="selectedItem" class="block truncate">{{ selectedItem.label }}</span>
-        <span v-else class="block truncate text-gray-400">{{ placeholder }}</span>
-        <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-          <font-awesome-icon class="w-5 h-5 text-gray-400" icon="sort"></font-awesome-icon>
+        <span v-if="selectedItem" class="block truncate">{{
+          selectedItem.label
+        }}</span>
+        <span v-else class="block truncate text-gray-400">{{
+          placeholder
+        }}</span>
+        <span
+          class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+        >
+          <font-awesome-icon
+            class="w-5 h-5 text-gray-400"
+            icon="sort"
+          ></font-awesome-icon>
         </span>
       </ListboxButton>
       <!--errors-->
@@ -31,13 +42,19 @@
   </Listbox>
 </template>
 
-<script>
-import { ref } from 'vue'
-import { Listbox, ListboxLabel, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
+<script lang="ts">
+import { ref } from "vue";
+import {
+  Listbox,
+  ListboxLabel,
+  ListboxButton,
+  ListboxOptions,
+  ListboxOption,
+} from "@headlessui/vue";
 
 // import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 
-export { default as BaseDropdownOption } from './BaseDropdownOption.vue'
+export { default as BaseDropdownOption } from "./BaseDropdownOption.vue";
 
 export const BaseDropdownSelect = {
   components: {
@@ -53,7 +70,7 @@ export const BaseDropdownSelect = {
   props: {
     modelValue: {
       type: String,
-      default: '',
+      default: "",
     },
     options: {
       type: Array,
@@ -61,29 +78,29 @@ export const BaseDropdownSelect = {
     },
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     placeholder: {
       type: String,
-      default: 'select',
+      default: "select",
     },
     errors: {
       type: Array,
       default: () => [],
     },
   },
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
   computed: {
     selectedItem: {
       get() {
-        return this.modelValue
+        return this.modelValue;
       },
       set(value) {
-        this.$emit('update:modelValue', value)
+        this.$emit("update:modelValue", value);
       },
     },
   },
-}
+};
 
-export default BaseDropdownSelect
+export default BaseDropdownSelect;
 </script>
