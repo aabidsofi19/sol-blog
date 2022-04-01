@@ -25,15 +25,15 @@ const goToMyPosts = () => {
   });
 };
 
-const navOpen = ref(true);
+const navOpen = ref(false);
 </script>
 
 <template>
   <nav
-    class="nav bg-yellow-400 flex flex-row justify-around items-center border-b-2 border-black py-8"
+    class="nav font-montserrat text-light bg-secondary flex flex-row justify-around items-center border-b-2 border-black py-8"
   >
     <h1
-      class="text-lg md:text-3xl font-semibold text-black hover:underline uppercase montserrat"
+      class="text-lg md:text-3xl font-bold hover:underline uppercase montserrat"
     >
       <router-link to="/"> Sol Blog </router-link>
     </h1>

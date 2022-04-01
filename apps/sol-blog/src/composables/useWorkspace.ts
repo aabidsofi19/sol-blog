@@ -19,15 +19,15 @@ interface Workspace {
 export const useWorkspace = (): Workspace | undefined =>
   inject(workspaceSymbol);
 
-const programID = new PublicKey("Ab5jcLYJ5dQUarijL1JuRJMMo321PzF9HEpf5Br1v95K");
+const programID = new PublicKey("FMhy9h13c1HeKQfvgkYWg6HzhWDCoCexPqoq7vHC89xM");
 
 export const initWorkspace = () => {
   const wallet = useAnchorWallet();
   const opts = {
     preflightCommitment: "processed",
   };
-  // const connection = new Connection("https://api.devnet.solana.com:443");
-  const connection = new Connection("http://127.0.0.1:8899");
+  const connection = new Connection("https://api.devnet.solana.com:443");
+  // const connection = new Connection("http://127.0.0.1:8899");
   const provider = computed(() => new Provider(connection, wallet.value, opts));
   const program: ComputedRef<BlogProgram> = computed(
     () => new Program(idl, programID, provider.value)

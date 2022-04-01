@@ -6,14 +6,16 @@ const goToEditor = () => router.push({ name: "create-post" });
 </script>
 
 <template>
-  <div class="bg-yellow-400 py-2 px-10 border-b-2 border-black">
-    <div class="bg-yellow-400 text-left py-8 pl-8 md:w-1/2 w-full">
-      <p class="container text-4xl font-bold text-black montserrat my-4">
+  <div
+    class="bg-secondary items-center h-1/2 px-10 border-b-2 flex flex-wrap border-black"
+  >
+    <div class="text-left pb-10 pl-8 w-full md:w-1/2">
+      <p class="container text-5xl font-bold text-light font-montserrat my-4">
         SolBlog is a Decentralized Blogging Platform . <br class="my-4" />
         Made for for people to make an impact on the world
       </p>
 
-      <p class="my-2 open-sans text-lg font-medium">
+      <p class="my-2 open-sans text-lg font-medium text-accent-light">
         It's easy and free to post your thinking on any topic and connect with
         millions of readers.
       </p>
@@ -24,6 +26,9 @@ const goToEditor = () => router.push({ name: "create-post" });
       >
         Start Writing
       </button>
+    </div>
+    <div class="w-full md:w-1/2 h-1/2">
+      <img src="../../assets/Blogging-bro.svg" alt="" />
     </div>
   </div>
 </template>

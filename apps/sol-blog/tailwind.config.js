@@ -4,7 +4,27 @@ const flowbite = require("flowbite/plugin");
 
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins", "Helvetica", "Arial", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+      colors: {
+        primary: "#05386B",
+        secondary: "#379683",
+        accent: "#5cdB95",
+        "accent-light": "#8EE4AF",
+        light: "#edf5e1",
+      },
+      spacing: {
+        128: "32rem",
+        144: "36rem",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
+    },
   },
   plugins: [typography, forms, flowbite],
   content: [

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import useEditor from "@/src/composables/useEditor";
-
+import BaseButton from "ui/BaseButton.vue";
 import {
   WalletMultiButton,
   WalletModalProvider,
@@ -47,11 +47,16 @@ const submit = () => {
     </div>
 
     <div class="flex gap-2">
-      <button class="btn-primary" @click="submit" v-if="connected">
+      <base-button
+        :loading="publishing"
+        secondary
+        @click="submit"
+        v-if="connected"
+      >
         <span v-if="publishing"> Publishing ... </span>
 
         <span v-else> Publish </span>
-      </button>
+      </base-button>
       <div class="px-4">
         <!-- wallet buton -->
         <wallet-modal-provider>

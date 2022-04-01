@@ -4,62 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.montserrat {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.open-sans {
-  font-family: 'Open Sans', sans-serif;
-}
-
-.btn {
-    @apply text-base font-medium rounded-lg py-2 px-4 ;
-  }
-
-.btn-primary{
-    @apply bg-blue-500 text-white text-base font-medium rounded-lg py-2 px-4 ;
-  
-}
-
-.editable > h2{
-    @apply text-5xl font-semibold montserrat;
-    font-family: 'Montserrat', sans-serif; 
-
-    
-}
-
-.editable{
-  @apply text-left font-medium text-black   antialiased md:text-xl ;
-  font-family: 'Open Sans', sans-serif;
-  
-  
-
-}
-
-.editable > h3{
-    @apply text-4xl font-semibold; 
-    font-family: 'Montserrat', sans-serif;
-    
-}
-
-.editable > p> a {
-    @apply  font-medium underline ;
-    font-family: 'Montserrat', sans-serif;
-
-
-}
-
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap'); */
 
 .wallet-adapter-button {
-    background-color: #404144;
+    @apply bg-primary text-light;
     border: none;
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-family: 'Inter', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
     font-size: 16px;
     font-weight: 600;
     height: 50px;
@@ -68,7 +23,7 @@
 }
 
 .wallet-adapter-button-trigger {
-    background-color: #4e44ce;
+    /* background-color: #4e44ce; */
 }
 
 .wallet-adapter-button:not([disabled]):focus-visible {

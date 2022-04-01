@@ -29,7 +29,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  info: {
+  accent: {
     type: Boolean,
     default: false,
   },
@@ -49,12 +49,12 @@ defineProps({
     class="text-center capitalize bg-red-400 font-montserrat block py-2 px-5 transition-all ease-in-out duration-300 hover:scale-105"
     :class="{
       rounded: !tile,
-      'bg-teal-700 hover:bg-teal-600 text-white ':
-        !secondary && !warning && !success && !info && !danger && !base,
-      'bg-mint text-gray-600  ': secondary,
+      'bg-primary font-montserrat text-light':
+        !secondary && !warning && !success && !accent && !danger && !base,
+      'bg-secondary text-light': secondary,
       'bg-yellow-600 text-white': warning,
       'bg-green-600 text-gray-600': success,
-      'bg-blue-600 text-gray-600': info,
+      'bg-accent text-light': accent,
       'bg-white hover:shadow-sm border border-red-500 text-red-500': danger,
       'bg-gray-400 cursor-not-allowed': disabled,
       'bg-gray-400 cursor-wait': loading,
