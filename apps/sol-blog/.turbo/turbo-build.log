@@ -1,0 +1,20 @@
+[32msol-blog:build: [0mcache hit, replaying output [2m4a4620d3fa28f50e[0m
+[32msol-blog:build: [0m$ vite build
+[32msol-blog:build: [0mvite v2.9.1 building for production...
+[32msol-blog:build: [0mtransforming...
+[32msol-blog:build: [0m✓ 113 modules transformed.
+[32msol-blog:build: [0mComplex binding patterns require an initialization value
+[32msol-blog:build: [0mfile: /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/@blocto/sdk/dist/blocto-sdk.module.js:1:6
+[32msol-blog:build: [0m1: var global$1 = (typeof global !== "undefined" ? global :
+[32msol-blog:build: [0m         ^
+[32msol-blog:build: [0m2:   typeof self !== "undefined" ? self :
+[32msol-blog:build: [0m3:   typeof window !== "undefined" ? window : {});
+[32msol-blog:build: [0merror during build:
+[32msol-blog:build: [0mError: Complex binding patterns require an initialization value
+[32msol-blog:build: [0m    at error (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/rollup/dist/shared/rollup.js:198:30)
+[32msol-blog:build: [0m    at Module.error (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/rollup/dist/shared/rollup.js:12477:16)
+[32msol-blog:build: [0m    at Module.tryParse (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/rollup/dist/shared/rollup.js:12853:25)
+[32msol-blog:build: [0m    at Module.setSource (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/rollup/dist/shared/rollup.js:12756:24)
+[32msol-blog:build: [0m    at ModuleLoader.addModuleSource (/mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/node_modules/rollup/dist/shared/rollup.js:22220:20)
+[32msol-blog:build: [0merror Command failed with exit code 1.
+[32msol-blog:build: [0minfo Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

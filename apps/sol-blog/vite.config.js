@@ -20,6 +20,18 @@ export default defineConfig({
   test: {
     include: ["tests/unit/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   },
+
+  optimizeDeps: {
+    exclude: ["@blocto/sdk"],
+  },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+      esmExternals: true,
+      include: ["node_modules/**"],
+    },
+  },
+
   plugins: [vue(), tsconfigPaths()],
   // build: {
   // 	rollupOptions: {

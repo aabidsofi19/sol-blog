@@ -2,11 +2,12 @@
 import { ref, computed } from "vue";
 import useEditor from "@/src/composables/useEditor";
 import BaseButton from "ui/BaseButton.vue";
+
 import {
-  WalletMultiButton,
+  useWallet,
   WalletModalProvider,
-} from "@solana/wallet-adapter-vue-ui";
-import { useWallet } from "@solana/wallet-adapter-vue";
+  WalletMultiButton,
+} from "solana-wallets-vue";
 import { useWorkspace } from "@/src/composables";
 
 interface Props {

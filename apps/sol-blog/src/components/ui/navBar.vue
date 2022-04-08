@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import {
-  WalletMultiButton,
-  WalletModalProvider,
-} from "@solana/wallet-adapter-vue-ui";
 import NavDrawer from "ui/BaseNavDrawer.vue";
-import { useWallet } from "@solana/wallet-adapter-vue";
+
+import {
+  useWallet,
+  WalletModalProvider,
+  WalletMultiButton,
+} from "solana-wallets-vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
 const wallet = useWallet();
+
 const { connected } = wallet;
+
 const router = useRouter();
 
 const goToMyPosts = () => {

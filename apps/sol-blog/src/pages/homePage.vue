@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useLocalStorage, useWallet } from "@solana/wallet-adapter-vue";
 import { useWorkspace } from "../composables";
 
 //ui components

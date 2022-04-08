@@ -5,7 +5,7 @@ import { computed, ref, watchEffect } from "vue";
 import { addImageFileToImageElem, getFileFromWeb3Result } from "helpers";
 import { getFile } from "api/ipfs";
 import dayjs from "dayjs";
-import { useWallet } from "@solana/wallet-adapter-vue";
+import { useWallet } from "solana-wallets-vue";
 import BaseButton from "ui/BaseButton.vue";
 import DropDownMenu from "ui/DropdownMenu.vue";
 import DropDownOption from "ui/BaseDropdownOption.vue";

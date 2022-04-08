@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useWallet } from "@solana/wallet-adapter-vue";
 import { useWorkspace } from "../composables";
 import { ref, computed, watchEffect } from "vue";
 import { authorFilter, fetchPosts } from "api";

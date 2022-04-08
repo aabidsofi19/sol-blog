@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, Ref, watchEffect, watch } from "vue";
 import * as MediumEditor from "medium-editor";
-import { useWallet } from "@solana/wallet-adapter-vue";
+import { useWallet } from "solana-wallets-vue";
 import { computed, onMounted, onUnmounted } from "vue";
 import { addImageFileToImageElem } from "helpers";
 import { BlogPostInputInterface } from "types/index";
