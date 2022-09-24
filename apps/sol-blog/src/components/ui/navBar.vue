@@ -3,7 +3,6 @@ import NavDrawer from "ui/BaseNavDrawer.vue";
 
 import {
   useWallet,
-  WalletModalProvider,
   WalletMultiButton,
 } from "solana-wallets-vue";
 import { useRouter } from "vue-router";
@@ -59,9 +58,7 @@ const navOpen = ref(false);
 
       <div class="px-4">
         <!-- wallet buton -->
-        <wallet-modal-provider>
           <wallet-multi-button></wallet-multi-button>
-        </wallet-modal-provider>
       </div>
     </div>
   </nav>

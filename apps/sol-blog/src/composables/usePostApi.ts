@@ -135,12 +135,12 @@ export const useQuery = (query: Function, args: any[]) => {
   const loading = ref(true);
   const errors = ref<Error[]>([]);
   const data = ref(null);
-
   const fetch = async (args: any[]) => {
     try {
       data.value = await query(...args);
     } catch (error) {
       errors.value.push(error as Error);
+      
     } finally {
       loading.value = false;
     }

@@ -89,6 +89,9 @@ onMounted(async () => {
   }
 });
 
+
+
+
 watchEffect(async () => {
   if (post.value) {
     const postIpfsHash = post.value.contentIpfsHash as string;
@@ -117,17 +120,25 @@ watchEffect(async () => {
         <base-pill disabled>{{ createdAgo }}</base-pill>
         <base-pill disabled>{{ createdAt }}</base-pill>
       </div>
+      
       <img
         ref="imgElem"
-        src="https://miro.medium.com/max/1400/1*vCbbZjOrWt1mclMJFSs6tw.jpeg"
+        src="../assets/css-loader-minimal.gif"
         class="mb-5 w-full h-60 md:h-96 object-cover rounded shadow"
         alt=""
       />
-
+     
       <div
+        v-if="content" 
         :innerHTML="content"
         class="prose text-left max-w-none md:prose-xl"
       ></div>
+
+      <div v-else class="text-4xl text-bold font-montserrat py-6">
+        Loading Content ...
+      </div>
+
+
       <div class="text-xs text-left font-mono mt-4">
         <div class="py-2 px-3 break-words border border-gray-600 rounded my-2">
           Ac : {{ postPubKey }}

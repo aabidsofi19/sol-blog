@@ -7,7 +7,7 @@ const postData: Ref<BlogPostInputInterface> = ref({
 
 export default () => {
   const getSavedData = (key: string) => {
-    let savedData = localStorage.getItem(key);
+    const savedData = localStorage.getItem(key);
     return savedData
       ? (JSON.parse(savedData) as BlogPostInputInterface)
       : ({} as BlogPostInputInterface);

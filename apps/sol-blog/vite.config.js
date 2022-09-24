@@ -6,7 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // https://vitejs.dev/config/
 export default defineConfig({
   define: {
-    global: {},
+    // global: "window",
     "process.env.VUE_APP_VERSION": 1.0, //fix for process not defined
   },
   resolve: {
@@ -21,15 +21,15 @@ export default defineConfig({
     include: ["tests/unit/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   },
 
-  optimizeDeps: {
-    exclude: ["@blocto/sdk"],
-  },
+  // optimizeDeps: {
+  //   exclude: ["@blocto/sdk"],
+  // },
   build: {
-    commonjsOptions: {
-      transformMixedEsModules: true,
-      esmExternals: true,
-      include: ["node_modules/**"],
-    },
+    // commonjsOptions: {
+    //   transformMixedEsModules: true,
+    //   esmExternals: true,
+    //   include: ["node_modules/**"],
+    // },
   },
 
   plugins: [vue(), tsconfigPaths()],

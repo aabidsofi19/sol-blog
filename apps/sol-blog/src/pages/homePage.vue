@@ -19,7 +19,7 @@ const {
   loading,
   errors,
   refetch,
-} = useQuery(fetchPosts, [workspace?.program.value]);
+} = useQuery(fetchPosts, [workspace?.program?.value]);
 
 const refetch_ = () => {
   console.log("refecthing");
@@ -52,7 +52,9 @@ const refetch_ = () => {
       :posts="posts"
       @refetch="refetch_"
     ></posts-list>
-    <div v-else>Loading Posts ...</div>
+    <div v-else-if="loading && errors.length() == 0">
+      <p class="font-4xl text-bold font-montserrat py-16">Loading Posts ...</p>
+    </div>
   </div>
 </template>
 
