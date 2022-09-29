@@ -87,17 +87,26 @@ watchEffect(async () => {
 
 <template>
   <div
-    class="flex flex-row justify-end items-center my-10 h-min-60 h-auto border border-gray-300 rounded-md shadow-sm"
+    class="flex  flex-col  items-center my-10 h-min-60 h-auto border border-gray-300 rounded-xl shadow-sm"
   >
-    <div class="text-left pr-3 w-2/3 p-8">
+
+
+    
+      <img
+        ref="imgElem"
+        class="object-cover w-full rounded-t-xl h-52"
+        src="../assets/Placeholder_view_vector.svg"
+      />
+
+    <div class="text-left w-full  p-4">
       <router-link
         :to="{ name: 'post', params: { address: post.publicKey.toString() } }"
-        class="montserrat capitalize text-slate-800 font-bold md:text-2xl text-left"
+        class="mb-6 capitalize text-slate-800 font-semibold md:text-2xl text-left"
       >
         {{ post.account.title }}
       </router-link>
 
-      <div class="flex justify-between flex-wrap gap-3 py-3">
+      <div class="flex justify-between flex-wrap gap-3 py-4">
         <base-pill class="bg-gray-300">{{ authorityConcated }}</base-pill>
         <base-pill disabled>
           {{ createdAt }}
@@ -112,22 +121,14 @@ watchEffect(async () => {
           <drop-down-option @click="deletePost_"> Delete </drop-down-option>
         </drop-down-menu>
       </div>
-      <div class="text-xs font-mono">
-        <div class="py-2 px-3 break-words border border-gray-600 rounded my-2">
+      <div class="text-xs text-gray-500 font-mono pt-4">
+        <div class="py-2 px-3 break-words truncate  border border-gray-500 rounded my-2">
           Ac : {{ post.publicKey.toString() }}
         </div>
-        <div class="py-2 px-3 break-words border border-gray-600 rounded my-2">
-          IPFS: {{ post.account.contentIpfsHash.toString() }}
+        <div class="py-2 px-3 truncate break-words border border-gray-500 rounded my-2">
+          IPFS : {{ post.account.contentIpfsHash.toString() }}
         </div>
       </div>
-    </div>
-
-    <div class="bg-red-300 w-1/3 flex">
-      <img
-        ref="imgElem"
-        class="object-cover flex h-80"
-        src="https://blog.logrocket.com/wp-content/uploads/2020/01/vue-typescript-tutorial-examples.png"
-      />
     </div>
   </div>
   <!--post -->

@@ -1,30 +1,43 @@
-[32msmart-contracts:build: [0mcache hit, replaying output [2m9f032db09f428d89[0m
-[32msmart-contracts:build: [0myarn run v1.22.17
-[32msmart-contracts:build: [0mwarning package.json: No license field
-[32msmart-contracts:build: [0m$ anchor build  
-[32msmart-contracts:build: [0mBPF SDK: /home/aabid/solana-1.8.5/bin/sdk/bpf
-[32msmart-contracts:build: [0mcargo-build-bpf child: rustup toolchain list -v
-[32msmart-contracts:build: [0mcargo-build-bpf child: cargo +bpf build --target bpfel-unknown-unknown --release
-[32msmart-contracts:build: [0mwarning: constant is never used: `MAX_CONTENT_LENGTH`
-[32msmart-contracts:build: [0m  --> programs/blog/src/lib.rs:61:1
-[32msmart-contracts:build: [0m   |
-[32msmart-contracts:build: [0m61 | const MAX_CONTENT_LENGTH: usize = 2420 * 4; // 2800 chars max.
-[32msmart-contracts:build: [0m   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[32msmart-contracts:build: [0m   |
-[32msmart-contracts:build: [0m   = note: `#[warn(dead_code)]` on by default
-[32msmart-contracts:build: [0m
-[32msmart-contracts:build: [0mwarning: constant is never used: `MAX_URL_LENGTH`
-[32msmart-contracts:build: [0m  --> programs/blog/src/lib.rs:62:1
-[32msmart-contracts:build: [0m   |
-[32msmart-contracts:build: [0m62 | const MAX_URL_LENGTH: usize = 200 * 4;
-[32msmart-contracts:build: [0m   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[32msmart-contracts:build: [0m
-[32msmart-contracts:build: [0mwarning: `blog` (lib) generated 2 warnings
-[32msmart-contracts:build: [0m    Finished release [optimized] target(s) in 0.61s
-[32msmart-contracts:build: [0mcargo-build-bpf child: /home/aabid/solana-1.8.5/bin/sdk/bpf/dependencies/bpf-tools/llvm/bin/llvm-readelf --dyn-symbols /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
-[32msmart-contracts:build: [0m
-[32msmart-contracts:build: [0mTo deploy this program:
-[32msmart-contracts:build: [0m  $ solana program deploy /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
-[32msmart-contracts:build: [0mThe program address will default to this keypair (override with --program-id):
-[32msmart-contracts:build: [0m  /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog-keypair.json
-[32msmart-contracts:build: [0mDone in 2.39s.
+[35msmart-contracts:build: [0mcache hit, replaying output [2m2fefeaebebb51ec5[0m
+[35msmart-contracts:build: [0m$ anchor build  
+[35msmart-contracts:build: [0mBPF SDK: /home/aabid/solana-1.8.5/bin/sdk/bpf
+[35msmart-contracts:build: [0mcargo-build-bpf child: rustup toolchain list -v
+[35msmart-contracts:build: [0mcargo-build-bpf child: cargo +bpf build --target bpfel-unknown-unknown --release
+[35msmart-contracts:build: [0mwarning: unused import: `anchor_lang::solana_program::system_program`
+[35msmart-contracts:build: [0m --> programs/blog/src/lib.rs:2:5
+[35msmart-contracts:build: [0m  |
+[35msmart-contracts:build: [0m2 | use anchor_lang::solana_program::system_program;
+[35msmart-contracts:build: [0m  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35msmart-contracts:build: [0m  |
+[35msmart-contracts:build: [0m  = note: `#[warn(unused_imports)]` on by default
+[35msmart-contracts:build: [0m
+[35msmart-contracts:build: [0mwarning: unused variable: `ctx`
+[35msmart-contracts:build: [0m  --> programs/blog/src/lib.rs:59:24
+[35msmart-contracts:build: [0m   |
+[35msmart-contracts:build: [0m59 |     pub fn delete_post(ctx:Context<DeletePost>) -> Result<()> {
+[35msmart-contracts:build: [0m   |                        ^^^ help: if this is intentional, prefix it with an underscore: `_ctx`
+[35msmart-contracts:build: [0m   |
+[35msmart-contracts:build: [0m   = note: `#[warn(unused_variables)]` on by default
+[35msmart-contracts:build: [0m
+[35msmart-contracts:build: [0mwarning: constant is never used: `MAX_CONTENT_LENGTH`
+[35msmart-contracts:build: [0m  --> programs/blog/src/lib.rs:69:1
+[35msmart-contracts:build: [0m   |
+[35msmart-contracts:build: [0m69 | const MAX_CONTENT_LENGTH: usize = 2420 * 4; // 2800 chars max.
+[35msmart-contracts:build: [0m   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35msmart-contracts:build: [0m   |
+[35msmart-contracts:build: [0m   = note: `#[warn(dead_code)]` on by default
+[35msmart-contracts:build: [0m
+[35msmart-contracts:build: [0mwarning: constant is never used: `MAX_URL_LENGTH`
+[35msmart-contracts:build: [0m  --> programs/blog/src/lib.rs:70:1
+[35msmart-contracts:build: [0m   |
+[35msmart-contracts:build: [0m70 | const MAX_URL_LENGTH: usize = 200 * 4;
+[35msmart-contracts:build: [0m   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35msmart-contracts:build: [0m
+[35msmart-contracts:build: [0mwarning: `blog` (lib) generated 4 warnings
+[35msmart-contracts:build: [0m    Finished release [optimized] target(s) in 0.65s
+[35msmart-contracts:build: [0mcargo-build-bpf child: /home/aabid/solana-1.8.5/bin/sdk/bpf/dependencies/bpf-tools/llvm/bin/llvm-readelf --dyn-symbols /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
+[35msmart-contracts:build: [0m
+[35msmart-contracts:build: [0mTo deploy this program:
+[35msmart-contracts:build: [0m  $ solana program deploy /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
+[35msmart-contracts:build: [0mThe program address will default to this keypair (override with --program-id):
+[35msmart-contracts:build: [0m  /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog-keypair.json

@@ -10,7 +10,7 @@ const goToEditor = () => router.push({ name: "create-post" });
     class="bg-secondary items-center h-1/2 px-10 border-b-2 flex flex-wrap border-black"
   >
     <div class="text-left pb-10 pl-8 w-full md:w-1/2">
-      <p class="container text-5xl font-bold text-light font-montserrat my-4">
+      <p class="container text-5xl font-bold text-light font-karla my-4">
         SolBlog is a Decentralized Blogging Platform . <br class="my-4" />
         Made for for people to make an impact on the world
       </p>

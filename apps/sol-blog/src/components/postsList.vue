@@ -11,7 +11,7 @@ const props = defineProps<props>();
 </script>
 
 <template>
-  <div class="w-full p-3 max-w-4xl mx-auto">
+  <div class="w-full grid grid-cols-3  gap-2 max-w-7xl mx-auto">
     <post-list-item
       :post="post"
       v-for="post in posts"

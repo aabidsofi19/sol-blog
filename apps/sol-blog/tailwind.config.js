@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "Helvetica", "Arial", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
+        sans: ["Karla", "Helvetica", "Arial", "sans-serif"],
+        poppins: ["Karla", "sans-serif"],
+        heading: ["Montserrat", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {

@@ -8,8 +8,8 @@
     "contracts"
   ],
   "nohoist": [
-    "**/ui",
-    "**/ui/**"
+    "*",
+    "**"
   ],
   "scripts": {
     "build": "turbo run build",

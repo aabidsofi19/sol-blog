@@ -17,6 +17,8 @@ import {
   BlogPostInputInterface,
   AnchorFilter,
 } from "types";
+
+
 import { publicKey } from "@project-serum/anchor/dist/cjs/utils";
 
 export const authorFilter = (authorBase58PublicKey: string): AnchorFilter => ({
@@ -107,12 +109,16 @@ async function fetchPosts(program: BlogProgram, filters: AnchorFilter[] = []) {
   return posts;
 }
 
+
 async function fetchPost(program: BlogProgram, address: String) {
   let pubKey = new PublicKey(address);
   let post = await program.account.blogPost.fetch(pubKey);
 
   return post;
 }
+
+
+
 
 async function deletePost(
   program: BlogProgram,
