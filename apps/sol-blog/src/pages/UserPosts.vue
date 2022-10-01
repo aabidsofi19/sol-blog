@@ -31,9 +31,9 @@ watchEffect(async () => {
 <template>
   <nav-bar />
 
-  <div>
-    <div class="font-lg my-3 text-gray-500">
-      POSTS BY : <span class="font-bold font-mono">{{ authorBase58 }}</span>
+  <div class="w-full px-4 mx-auto max-w-7xl py-6">
+    <div class="font-lg my-3 text-gray-500 ">
+      POSTS BY : <span class="font-semibold">{{ authorBase58 }}</span>
     </div>
     <posts-list :posts="posts" />
   </div>
