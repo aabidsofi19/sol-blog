@@ -1,7 +1,11 @@
-[35msmart-contracts:build: [0mcache hit, replaying output [2m2fefeaebebb51ec5[0m
+[35msmart-contracts:build: [0mcache hit, replaying output [2m1ea2f8d4ec3b3684[0m
 [35msmart-contracts:build: [0m$ anchor build  
-[35msmart-contracts:build: [0mBPF SDK: /home/aabid/solana-1.8.5/bin/sdk/bpf
+[35msmart-contracts:build: [0mBPF SDK: /home/aabid/.local/bin/sdk/bpf
 [35msmart-contracts:build: [0mcargo-build-bpf child: rustup toolchain list -v
+[35msmart-contracts:build: [0mcargo-build-bpf child: rustup toolchain uninstall bpf
+[35msmart-contracts:build: [0minfo: uninstalling toolchain 'bpf'
+[35msmart-contracts:build: [0minfo: toolchain 'bpf' uninstalled
+[35msmart-contracts:build: [0mcargo-build-bpf child: rustup toolchain link bpf /home/aabid/.local/bin/sdk/bpf/dependencies/bpf-tools/rust
 [35msmart-contracts:build: [0mcargo-build-bpf child: cargo +bpf build --target bpfel-unknown-unknown --release
 [35msmart-contracts:build: [0mwarning: unused import: `anchor_lang::solana_program::system_program`
 [35msmart-contracts:build: [0m --> programs/blog/src/lib.rs:2:5
@@ -34,10 +38,10 @@
 [35msmart-contracts:build: [0m   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 [35msmart-contracts:build: [0m
 [35msmart-contracts:build: [0mwarning: `blog` (lib) generated 4 warnings
-[35msmart-contracts:build: [0m    Finished release [optimized] target(s) in 0.65s
-[35msmart-contracts:build: [0mcargo-build-bpf child: /home/aabid/solana-1.8.5/bin/sdk/bpf/dependencies/bpf-tools/llvm/bin/llvm-readelf --dyn-symbols /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
+[35msmart-contracts:build: [0m    Finished release [optimized] target(s) in 0.74s
+[35msmart-contracts:build: [0mcargo-build-bpf child: /home/aabid/.local/bin/sdk/bpf/dependencies/bpf-tools/llvm/bin/llvm-readelf --dyn-symbols /home/aabid/projects/sol-blog/contracts/target/deploy/blog.so
 [35msmart-contracts:build: [0m
 [35msmart-contracts:build: [0mTo deploy this program:
-[35msmart-contracts:build: [0m  $ solana program deploy /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog.so
+[35msmart-contracts:build: [0m  $ solana program deploy /home/aabid/projects/sol-blog/contracts/target/deploy/blog.so
 [35msmart-contracts:build: [0mThe program address will default to this keypair (override with --program-id):
-[35msmart-contracts:build: [0m  /mnt/1EE85398E8536CD1/Users/hp/Workplace/projects/solana/blog/contracts/target/deploy/blog-keypair.json
+[35msmart-contracts:build: [0m  /home/aabid/projects/sol-blog/contracts/target/deploy/blog-keypair.json

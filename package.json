@@ -7,10 +7,6 @@
     "packages/*",
     "contracts"
   ],
-  "nohoist": [
-    "*",
-    "**"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -33,52 +29,6 @@
     "ts-mocha": "^9.0.2",
     "turbo": "latest",
     "typescript": "^4.3.5"
-  },
-  "turbo": {
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**",
-          ".vue/**"
-        ]
-      },
-      "test": {
-        "dependsOn": [
-          "build"
-        ],
-        "outputs": []
-      },
-      "lint": {
-        "outputs": []
-      },
-      "dev": {
-        "cache": false
-      },
-      "deployDev": {
-        "dependsOn": [
-          "build",
-          "^build"
-        ],
-        "outputs": []
-      },
-      "smart-contracts#deployDev": {
-        "dependsOn": [
-          "build",
-          "dev"
-        ],
-        "outputs": []
-      },
-      "api#test": {
-        "dependsOn": [
-          "^test",
-          "smart-contracts#deployDev"
-        ],
-        "outputs": []
-      }
-    }
   },
   "engines": {
     "npm": ">=7.0.0",
