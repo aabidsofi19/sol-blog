@@ -37,7 +37,7 @@ const navOpen = ref(false);
     <h1
       class="text-lg md:text-3xl font-bold hover:underline uppercase montserrat"
     >
-      <router-link to="/"> Sol Blog </router-link>
+      <router-link to="/"> Flope </router-link>
     </h1>
 
     <div class="flex items-center justify-center text-sm md:text-lg">

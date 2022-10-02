@@ -3,7 +3,7 @@
 const features = [
   {
     heading : "World-class contracts",
-    content : "Burn less gas. Mirror contracts are beyond optimized."
+    content : "Burn less gas. flope contracts are beyond optimized."
   },
 {
     heading : "Login with your wallet",

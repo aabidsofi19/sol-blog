@@ -11,7 +11,7 @@ const goToEditor = () => router.push({ name: "create-post" });
   >
     <div class="text-left pb-10 pl-8 w-full md:w-1/2">
       <p class="container text-5xl font-bold text-light font-karla my-4">
-        SolBlog is a Decentralized Blogging Platform . <br class="my-4" />
+        Flope is a Decentralized Blogging Platform . <br class="my-4" />
         Made for for people to make an impact on the world
       </p>
 

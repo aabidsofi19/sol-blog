@@ -8,12 +8,12 @@
           Decentralized by design
         </h3>
         <p class="pb-6 font-medium text-lg text-gray-700">
-          You publish it. You own it. Mirror is built using web3 technologies:
+          You publish it. You own it. flope is built using web3 technologies:
           log in with Ethereum, store your writing on Arweave, and publish using
-          Mirror’s credibly-neutral protocol.
+          flope’s credibly-neutral protocol.
         </p>
         <img
-          src="https://mirror.xyz/vectors/publishing.svg"
+          src="https://flope.xyz/vectors/publishing.svg"
           alt=""
           class="my-2 mx-auto"
         />
@@ -23,12 +23,12 @@
           IPFS Pinning and Storage
         </h3>
         <p class="pb-6 font-medium text-lg text-gray-700">
-          You publish it. You own it. Mirror is built using web3 technologies:
+          You publish it. You own it. flope is built using web3 technologies:
           log in with Ethereum, store your writing on Arweave, and publish using
-          Mirror’s credibly-neutral protocol.
+          flope’s credibly-neutral protocol.
         </p>
         <img
-          src="https://mirror.xyz/_next/image?url=%2Fimages%2Fwriting-nfts.png&w=1920&q=75"
+          src="https://flope.xyz/_next/image?url=%2Fimages%2Fwriting-nfts.png&w=1920&q=75"
           alt=""
           class="my-2 mx-auto"
         />
@@ -43,13 +43,13 @@
           </h3>
           <p class="pb-6 font-medium text-lg text-gray-700">
             Web3 ideas deserve a specially designed toolkit. Built from the
-            ground up on web3, Mirror’s powerful editor explodes the
+            ground up on web3, flope’s powerful editor explodes the
             possibilities of writing, allowing you to embed NFTs and compose
             with web3 blocks from across the ecosystem.
           </p>
         </div>
         <img
-          src="https://mirror.xyz/_next/image?url=%2Fimages%2Fweb3-editor.png&w=1920&q=75"
+          src="https://flope.xyz/_next/image?url=%2Fimages%2Fweb3-editor.png&w=1920&q=75"
           alt=""
           class="my-2 mx-auto"
         />
