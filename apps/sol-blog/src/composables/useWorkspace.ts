@@ -1,12 +1,11 @@
-import { inject, provide, computed, ComputedRef, Ref } from "vue";
+import { computed, ComputedRef, Ref } from "vue";
 import { AnchorWallet, useAnchorWallet } from "solana-wallets-vue";
 import { Connection, PublicKey, Commitment } from "@solana/web3.js";
 import { Provider, Program } from "@project-serum/anchor";
-import idl from "smart-contracts/target/idl/blog.json";
+import {blogIDL} from "types/index";
 
 import { BlogProgram } from "types";
 
-const workspaceSymbol = Symbol();
 
 interface Workspace {
   program: ComputedRef<BlogProgram|undefined>;
@@ -41,7 +40,7 @@ export const initWorkspace = () => {
     if (provider.value == undefined) {
       return;
     }
-    return (new Program(idl, programID, provider.value) as unknown) as BlogProgram;
+    return (new Program(blogIDL, programID, provider.value) as unknown) as BlogProgram;
   });
 
   workspace = {

@@ -1,6 +1,6 @@
 import { IdlAccounts, Program } from "@project-serum/anchor";
 import { Blog } from "./blog";
-
+import blogIDL from "./idl/blog.json"
 type BlogProgram = Program<Blog>;
 type BlogProgramAccounts = IdlAccounts<Blog>;
 type BlogPostAccount = BlogProgramAccounts["blogPost"];
@@ -23,4 +23,5 @@ export {
   type BlogProgram,
   type BlogProgramAccounts,
   type BlogPostAccount,
+  blogIDL ,
 };

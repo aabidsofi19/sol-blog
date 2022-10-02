@@ -1,7 +1,31 @@
-[35msol-blog:build: [0mcache hit, replaying output [2md923b28b2544051b[0m
+[35msol-blog:build: [0mcache hit, replaying output [2md94c27349f577073[0m
 [35msol-blog:build: [0m$ vite build
 [35msol-blog:build: [0mvite v2.9.1 building for production...
 [35msol-blog:build: [0mtransforming...
 [35msol-blog:build: [0mBrowserslist: caniuse-lite is outdated. Please run:
 [35msol-blog:build: [0m  npx browserslist@latest --update-db
 [35msol-blog:build: [0m  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+[35msol-blog:build: [0mUse of eval is strongly discouraged, as it poses security risks and may cause issues with minification
+[35msol-blog:build: [0mUse of eval is strongly discouraged, as it poses security risks and may cause issues with minification
+[35msol-blog:build: [0mUse of eval is strongly discouraged, as it poses security risks and may cause issues with minification
+[35msol-blog:build: [0m✓ 2229 modules transformed.
+[35msol-blog:build: [0mrendering chunks...
+[35msol-blog:build: [0mdist/assets/css-loader-minimal.942d3ba9.gif        328.97 KiB
+[35msol-blog:build: [0mdist/assets/Blogging-bro.aa45c79e.svg              35.57 KiB
+[35msol-blog:build: [0mdist/assets/Placeholder_view_vector.583de8cc.svg   0.48 KiB
+[35msol-blog:build: [0mdist/index.html                                    0.50 KiB
+[35msol-blog:build: [0mdist/assets/homePage.ab3f66fd.js                   5.24 KiB / gzip: 2.26 KiB
+[35msol-blog:build: [0mdist/assets/postsList.ba6fcdc4.js                  4.23 KiB / gzip: 2.02 KiB
+[35msol-blog:build: [0mdist/assets/blogPostPage.cfd0a385.js               2.40 KiB / gzip: 1.11 KiB
+[35msol-blog:build: [0mdist/assets/UserPosts.2f44ad5f.js                  0.68 KiB / gzip: 0.45 KiB
+[35msol-blog:build: [0mdist/assets/UpdatePost.c9036a34.js                 0.98 KiB / gzip: 0.58 KiB
+[35msol-blog:build: [0mdist/assets/homePage.3e8923b1.css                  0.03 KiB / gzip: 0.05 KiB
+[35msol-blog:build: [0mdist/assets/index.c42bec16.js                      22.89 KiB / gzip: 5.05 KiB
+[35msol-blog:build: [0mdist/assets/index.d49af92a.css                     62.03 KiB / gzip: 10.80 KiB
+[35msol-blog:build: [0mdist/assets/BasePill.f119e1fc.js                   65.61 KiB / gzip: 16.57 KiB
+[35msol-blog:build: [0mdist/assets/index.3523945c.js                      1148.38 KiB / gzip: 326.75 KiB
+[35msol-blog:build: [0m
+[35msol-blog:build: [0m(!) Some chunks are larger than 500 KiB after minification. Consider:
+[35msol-blog:build: [0m- Using dynamic import() to code-split the application
+[35msol-blog:build: [0m- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/guide/en/#outputmanualchunks
+[35msol-blog:build: [0m- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

@@ -1,0 +1,127 @@
+{
+  "version": "0.1.0",
+  "name": "blog",
+  "instructions": [
+    {
+      "name": "createPost",
+      "accounts": [
+        {
+          "name": "blogPost",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "id",
+          "type": "publicKey"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "bannerIpfsHash",
+          "type": "bytes"
+        },
+        {
+          "name": "contentIpfsHash",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "updatePost",
+      "accounts": [
+        {
+          "name": "blogPost",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "bannerIpfsHash",
+          "type": "bytes"
+        },
+        {
+          "name": "contentIpfsHash",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "deletePost",
+      "accounts": [
+        {
+          "name": "blogPost",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BlogPost",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "id",
+            "type": "publicKey"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "bannerIpfsHash",
+            "type": "bytes"
+          },
+          {
+            "name": "contentIpfsHash",
+            "type": "bytes"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
