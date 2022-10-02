@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, Ref, watchEffect, watch } from "vue";
-import * as MediumEditor from "medium-editor";
+import MediumEditor from "medium-editor";
 import { useWallet } from "solana-wallets-vue";
 import { computed, onMounted, onUnmounted } from "vue";
 import { addImageFileToImageElem } from "helpers";
@@ -25,12 +25,6 @@ interface Props {
 const props = defineProps<Props>();
 const savedData = computed(() => getSavedData(props.postKey));
 
-// if (savedData.value) {
-//   setPostData({ ...postInputData.value, ...savedData.value });
-// }
-// postInputData.value.content = savedData.value.content;
-// postInputData.value.title = savedData.value.title;
-
 const selectImage = (e: Event) => {
   const input = e.target as HTMLInputElement;
 
@@ -41,6 +35,7 @@ const selectImage = (e: Event) => {
 };
 
 onMounted(() => {
+  console.log(MediumEditor)
   new MediumEditor("#content-editor");
 });
 
@@ -109,7 +104,7 @@ onMounted(() => {
       </div>
     </form>
 
-    <div v-if="!connected">connected to wallet first</div>
+    <div v-if="!connected">connect to wallet first</div>
   </div>
 </template>
 
